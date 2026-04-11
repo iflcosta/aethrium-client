@@ -44,7 +44,7 @@ controller:registerEvents(g_game, {
         if version >= 840 then
             g_game.enableFeature(GameProtocolChecksum)
             g_game.enableFeature(GameAccountNames)
--- g_game.enableFeature(GameDoubleFreeCapacity) -- Forced OFF
+            g_game.enableFeature(GameDoubleFreeCapacity)
         end
 
         if version >= 841 then
@@ -85,6 +85,10 @@ controller:registerEvents(g_game, {
             g_game.enableFeature(GameDoubleExperience)
             g_game.enableFeature(GamePlayerMounts)
             g_game.enableFeature(GameSpellList)
+        end
+
+        if version >= 860 then
+            g_game.disableFeature(GamePlayerRegenerationTime)
         end
 
         if version >= 910 then
