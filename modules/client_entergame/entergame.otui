@@ -277,3 +277,13 @@ EnterGameWindow
     color: green
     text-auto-resize: true
 
+  UIButton
+    id: btnLanguage
+    !text: tr('Language')
+    font: verdana-11px-monochrome
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-bottom: 4
+    size: 60 14
+    @onClick: modules.client_locales.createWindow()
+
