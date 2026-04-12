@@ -300,8 +300,11 @@ local function hideOldClientStats()
     setSkillGroupVisibility('defence', features.charSkills)
     setSkillGroupVisibility('misc', features.charSkills)
     setSkillGroupVisibility('GameAdditionalSkills', features.additionalSkills)
-    setSkillGroupVisibility('GameForgeSkillStats1332', features.forgeSkills and version >= 1332)
-    setSkillGroupVisibility('GameForgeSkillStats', features.forgeSkills)
+    -- only hide forge skill groups if GameAdditionalSkills is not covering them
+    if not features.additionalSkills then
+        setSkillGroupVisibility('GameForgeSkillStats1332', features.forgeSkills and version >= 1332)
+        setSkillGroupVisibility('GameForgeSkillStats', features.forgeSkills)
+    end
 end
 
 local function hideMenuOptionsForOldClients(menu)
