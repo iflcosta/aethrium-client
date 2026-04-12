@@ -185,7 +185,8 @@ local SKILL_GROUPS = {
         'skillId2', 'skillId3', 'skillId4', 'skillId5', 'skillId6'
     },
     GameAdditionalSkills = {
-        'skillId7', 'skillId8', 'skillId9', 'skillId10', 'skillId11', 'skillId12'
+        'skillId7', 'skillId8', 'skillId9', 'skillId10', 'skillId11', 'skillId12',
+        'skillId13', 'skillId14', 'skillId15', 'skillId16'
     },
     GameForgeSkillStats = {
         'skillId13', 'skillId14', 'skillId15'

@@ -311,6 +311,9 @@ void LocalPlayer::setHealth(const uint32_t health, const uint32_t maxHealth)
         m_health = health;
         m_maxHealth = maxHealth;
 
+        const uint8_t percent = maxHealth > 0 ? static_cast<uint8_t>(std::min<uint32_t>(100u, (health * 100u) / maxHealth)) : 0;
+        setHealthPercent(percent);
+
         callLuaField("onHealthChange", health, maxHealth, oldHealth, oldMaxHealth);
 
         if (isDead()) {
@@ -377,6 +380,9 @@ void LocalPlayer::setMana(const uint32_t mana, const uint32_t maxMana)
     const uint32_t oldMaxMana = m_maxMana;
     m_mana = mana;
     m_maxMana = maxMana;
+
+    const uint8_t percent = maxMana > 0 ? static_cast<uint8_t>(std::min<uint32_t>(100u, (mana * 100u) / maxMana)) : 0;
+    setManaPercent(percent);
 
     callLuaField("onManaChange", mana, maxMana, oldMana, oldMaxMana);
 }
