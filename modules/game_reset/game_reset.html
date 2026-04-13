@@ -1,0 +1,99 @@
+<link href="game_reset.css" />
+<html>
+  <div style="width: 100%; height: 100%" placement="center">
+    <window
+      class="reset-window"
+      title="Reset de Personagem"
+      placement="center"
+      onescape="self:cancelReset()"
+    >
+
+      <!-- Header -->
+      <span class="reset-title">{{self.resetTitle}}</span>
+      <span class="reset-subtitle">{{self.resetSubtitle}}</span>
+
+      <div class="reset-divider" />
+
+      <!-- Body -->
+      <div class="reset-body">
+
+        <!-- LEFT: Losses -->
+        <div class="reset-col-loss">
+          <span class="reset-col-header loss-header">Voce Perde</span>
+
+          <div class="reset-stat-row">
+            <span class="stat-label">Level</span>
+            <span class="stat-value loss-value">-&gt; 8</span>
+          </div>
+          <div class="reset-stat-row">
+            <span class="stat-label">Redux Skills</span>
+            <span class="stat-value loss-value">{{self.reduxPct}}</span>
+          </div>
+          <div class="reset-stat-row">
+            <span class="stat-label">Redux Magia</span>
+            <span class="stat-value loss-value">{{self.reduxPct}}</span>
+          </div>
+
+          <div class="reset-inner-divider" />
+          <span class="reset-section-label">Preview Skills:</span>
+
+          <div
+            *for="local sk in (self.skills or {})"
+            class="skill-row"
+          >
+            <span class="skill-name">{{sk.name}}</span>
+            <span class="skill-redux">{{sk.after}}</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Gains -->
+        <div class="reset-col-gain">
+          <span class="reset-col-header gain-header">Voce Ganha</span>
+
+          <div class="reset-stat-row">
+            <span class="stat-label">HP Maximo</span>
+            <span class="stat-value gain-value">{{self.bonusHP}}</span>
+          </div>
+          <div class="reset-stat-row">
+            <span class="stat-label">Mana Maximo</span>
+            <span class="stat-value gain-value">{{self.bonusMana}}</span>
+          </div>
+          <div class="reset-stat-row">
+            <span class="stat-label">Capacidade</span>
+            <span class="stat-value gain-value">{{self.bonusCap}}</span>
+          </div>
+
+          <div class="reset-inner-divider" />
+          <span class="reset-section-label">Apos o Reset:</span>
+
+          <div class="reset-stat-row">
+            <span class="stat-label">HP Maximo</span>
+            <span class="stat-value acc-value">{{self.accHP}}</span>
+          </div>
+          <div class="reset-stat-row">
+            <span class="stat-label">Mana Maximo</span>
+            <span class="stat-value acc-value">{{self.accMana}}</span>
+          </div>
+          <div class="reset-stat-row">
+            <span class="stat-label">Capacidade</span>
+            <span class="stat-value acc-value">{{self.accCap}}</span>
+          </div>
+
+          <div *if="self.hasMilestone" class="reset-milestone">
+            {{self.milestone}}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reset-divider" />
+
+      <!-- Footer -->
+      <div class="reset-footer">
+        <button class="reset-btn-cancel" onclick="self:cancelReset()">Cancelar</button>
+        <button class="reset-btn-confirm" onclick="self:confirmReset()">Confirmar Reset</button>
+      </div>
+
+    </window>
+  </div>
+</html>

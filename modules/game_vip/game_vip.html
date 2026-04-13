@@ -1,0 +1,51 @@
+<link href="game_vip.css" />
+<html>
+  <div style="width: 100%; height: 100%" placement="center">
+    <window
+      class="vip-window"
+      title="VIP Status"
+      placement="center"
+      onescape="self:closeVip()"
+    >
+
+      <!-- Header -->
+      <span class="vip-tier-name" *color="self.tierColor">{{self.tierName}}</span>
+      <span class="vip-status-text">{{self.statusText}}</span>
+      <span class="vip-status-text">{{self.expiresAt}}</span>
+
+      <div class="vip-divider" />
+
+      <!-- Benefits -->
+      <span class="vip-section-label">Benefits</span>
+
+      <div class="vip-stat-row">
+        <span class="stat-label">XP Bonus</span>
+        <span class="stat-value vip-bonus-value">{{self.xpBonus}}</span>
+      </div>
+      <div class="vip-stat-row">
+        <span class="stat-label">Loot Bonus</span>
+        <span class="stat-value vip-bonus-value">{{self.lootBonus}}</span>
+      </div>
+      <div class="vip-stat-row">
+        <span class="stat-label">Depot Capacity</span>
+        <span class="stat-value vip-bonus-value">{{self.depot}}</span>
+      </div>
+      <div class="vip-stat-row">
+        <span class="stat-label">Autoloot</span>
+        <span class="stat-value vip-bonus-value">{{self.autoloot}}</span>
+      </div>
+      <div class="vip-stat-row">
+        <span class="stat-label">Bless Discount</span>
+        <span class="stat-value vip-bonus-value">{{self.blessDiscount}}</span>
+      </div>
+
+      <div class="vip-divider" />
+
+      <!-- Footer -->
+      <div class="vip-footer">
+        <button class="vip-btn-close" onclick="self:closeVip()">Close</button>
+      </div>
+
+    </window>
+  </div>
+</html>

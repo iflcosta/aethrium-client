@@ -1,0 +1,89 @@
+.vip-window {
+  width: 320px;
+  height: 280px;
+}
+
+.vip-tier-name {
+  width: 300px;
+  height: 22px;
+  font-size: 13;
+  text-align: center;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.vip-status-text {
+  width: 300px;
+  height: 14px;
+  font-size: 10;
+  color: #a0a0a0;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.vip-divider {
+  width: 300px;
+  height: 1px;
+  background-color: #4a3010;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.vip-section-label {
+  width: 300px;
+  height: 14px;
+  font-size: 10;
+  color: #a07830;
+  margin-bottom: 4px;
+  margin-left: 10px;
+}
+
+.vip-stat-row {
+  display: flex;
+  width: 300px;
+  height: 16px;
+  margin-bottom: 2px;
+  margin-left: 10px;
+}
+
+.stat-label {
+  width: 160px;
+  height: 16px;
+  font-size: 10;
+  color: #c0b090;
+}
+
+.stat-value {
+  width: 130px;
+  height: 16px;
+  font-size: 10;
+  text-align: right;
+  align-items: center;
+}
+
+.vip-bonus-value {
+  color: #50e050;
+}
+
+.vip-footer {
+  display: flex;
+  width: 300px;
+  height: 30px;
+  margin-top: 6px;
+  margin-left: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.vip-btn-close {
+  --image-source: "/modules/game_forge/images/button";
+  --image-border: 3;
+  padding: 3px 10px !important;
+  min-width: 70px;
+  min-height: 21px;
+  color: #c0b090;
+}
+
+.vip-btn-close:pressed {
+  padding: 3px 10px !important;
+}

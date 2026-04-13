@@ -1,0 +1,196 @@
+ResetWindow < MainWindow
+  !title: tr('Reset de Personagem')
+  size: 480 420
+  @onEscape: modules.game_reset.cancelReset()
+
+  // Header
+  Label
+    id: resetTitle
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 5
+    font: verdana-11px-rounded
+    color: #e0a030
+    text: 1º RESET
+
+  Label
+    id: resetSubtitle
+    anchors.top: prev.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 2
+    font: verdana-11px-rounded
+    color: #a0a0a0
+    text: Nível necessário: ?  |  Cap de XP: ?
+
+  HorizontalSeparator
+    id: headerSep
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+
+  // Body
+  Panel
+    id: bodyPanel
+    anchors.top: headerSep.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: footerSep.top
+    margin-top: 4
+    margin-bottom: 4
+
+    // LEFT: Losses
+    Panel
+      id: lossPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.bottom: parent.bottom
+      width: 220
+      layout: verticalBox
+      padding: 6
+
+      Label
+        !text: tr('Você Perde')
+        font: verdana-11px-rounded
+        color: #cc4444
+        text-align: center
+
+      HorizontalSeparator
+        margin-top: 2
+        margin-bottom: 2
+
+      Label
+        !text: tr('Level → 8')
+        color: #cc6666
+
+      Label
+        id: reduxSkillsText
+        color: #cc6666
+        text: Redux Skills: -30%
+
+      Label
+        id: reduxMLText
+        color: #cc6666
+        text: Redux Magic Level: -30%
+
+      HorizontalSeparator
+        margin-top: 4
+        margin-bottom: 2
+
+      Label
+        !text: tr('Preview de Skills:')
+        color: #a07830
+
+      ScrollablePanel
+        id: skillsScroll
+        anchors.fill: parent
+        layout: verticalBox
+        padding: 2
+        vertical-scrollbar: skillsScrollbar
+
+      VerticalScrollBar
+        id: skillsScrollbar
+        anchors.top: skillsScroll.top
+        anchors.bottom: skillsScroll.bottom
+        anchors.right: parent.right
+        pixels-per-scroll: 14
+
+    VerticalSeparator
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: lossPanel.right
+      margin-left: 4
+      margin-right: 4
+
+    // RIGHT: Gains
+    Panel
+      id: gainPanel
+      anchors.top: parent.top
+      anchors.left: lossPanel.right
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      layout: verticalBox
+      padding: 6
+      margin-left: 10
+
+      Label
+        !text: tr('Você Ganha')
+        font: verdana-11px-rounded
+        color: #44cc44
+        text-align: center
+
+      HorizontalSeparator
+        margin-top: 2
+        margin-bottom: 2
+
+      Label
+        id: bonusHPLabel
+        color: #66cc66
+        text: HP Máximo: +0
+
+      Label
+        id: bonusManaLabel
+        color: #66cc66
+        text: Mana Máximo: +0
+
+      Label
+        id: bonusCapLabel
+        color: #66cc66
+        text: Capacidade: +0
+
+      HorizontalSeparator
+        margin-top: 4
+        margin-bottom: 2
+
+      Label
+        !text: tr('Total Acumulado:')
+        color: #a07830
+
+      Label
+        id: accHPLabel
+        color: #a0c8a0
+        text: HP Total: +0
+
+      Label
+        id: accManaLabel
+        color: #a0c8a0
+        text: Mana Total: +0
+
+      Label
+        id: accCapLabel
+        color: #a0c8a0
+        text: Cap Total: +0
+
+      Label
+        id: milestoneLabel
+        color: #e0c050
+        text:
+        margin-top: 6
+
+  HorizontalSeparator
+    id: footerSep
+    anchors.bottom: confirmButton.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-bottom: 6
+
+  Button
+    id: cancelButton
+    !text: tr('Cancelar')
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    margin-bottom: 5
+    margin-left: 5
+    width: 80
+    @onClick: modules.game_reset.cancelReset()
+
+  Button
+    id: confirmButton
+    !text: tr('Confirmar Reset')
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 5
+    margin-right: 5
+    width: 120
+    color: #e0a030
+    @onClick: modules.game_reset.confirmReset()

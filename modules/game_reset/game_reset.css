@@ -1,0 +1,225 @@
+.reset-window {
+  width: 480px;
+  height: 410px;
+}
+
+.reset-title {
+  width: 460px;
+  height: 20px;
+  font-size: 11;
+  color: #d4a843;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.reset-subtitle {
+  width: 460px;
+  height: 14px;
+  font-size: 10;
+  color: #a07830;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.reset-divider {
+  width: 460px;
+  height: 1px;
+  background-color: #4a3010;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+/* BODY */
+.reset-body {
+  display: flex;
+  width: 460px;
+  height: 310px;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+/* LEFT COLUMN */
+.reset-col-loss {
+  width: 218px;
+  height: 308px;
+  background-color: #1a0a0a;
+  --border-width-top: 1;
+  --border-color-top: #6b1a1a;
+  --border-width-bottom: 1;
+  --border-color-bottom: #6b1a1a;
+  --border-width-left: 1;
+  --border-color-left: #6b1a1a;
+  --border-width-right: 1;
+  --border-color-right: #6b1a1a;
+  padding: 5px;
+  margin-right: 8px;
+}
+
+/* RIGHT COLUMN */
+.reset-col-gain {
+  width: 218px;
+  height: 308px;
+  background-color: #0a1a0a;
+  --border-width-top: 1;
+  --border-color-top: #1a6b1a;
+  --border-width-bottom: 1;
+  --border-color-bottom: #1a6b1a;
+  --border-width-left: 1;
+  --border-color-left: #1a6b1a;
+  --border-width-right: 1;
+  --border-color-right: #1a6b1a;
+  padding: 5px;
+}
+
+.reset-col-header {
+  width: 208px;
+  height: 18px;
+  font-size: 11;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.loss-header {
+  color: #e05050;
+}
+
+.gain-header {
+  color: #50c050;
+}
+
+.reset-inner-divider {
+  width: 208px;
+  height: 1px;
+  background-color: #3a2a10;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.reset-section-label {
+  width: 208px;
+  height: 14px;
+  font-size: 10;
+  color: #a07830;
+  margin-bottom: 2px;
+}
+
+/* STAT ROWS */
+.reset-stat-row {
+  display: flex;
+  width: 208px;
+  height: 16px;
+  margin-bottom: 1px;
+}
+
+.stat-label {
+  width: 130px;
+  height: 16px;
+  font-size: 10;
+  color: #c0b090;
+}
+
+.stat-value {
+  width: 78px;
+  height: 16px;
+  font-size: 10;
+  text-align: right;
+  align-items: center;
+}
+
+.loss-value {
+  color: #e05050;
+}
+
+.gain-value {
+  color: #50e050;
+}
+
+.acc-value {
+  color: #a0c8b0;
+}
+
+/* SKILL ROWS */
+.skill-row {
+  display: flex;
+  width: 208px;
+  height: 15px;
+  margin-bottom: 1px;
+}
+
+.skill-name {
+  width: 80px;
+  height: 15px;
+  font-size: 10;
+  color: #b0b0b0;
+}
+
+.skill-redux {
+  width: 120px;
+  height: 15px;
+  font-size: 10;
+  color: #e05050;
+}
+
+.skill-sealed {
+  width: 120px;
+  height: 15px;
+  font-size: 10;
+  color: #d4a843;
+}
+
+/* MILESTONE */
+.reset-milestone {
+  width: 208px;
+  height: 20px;
+  font-size: 10;
+  color: #d4a843;
+  --border-width-top: 1;
+  --border-color-top: #d4a843;
+  --border-width-bottom: 1;
+  --border-color-bottom: #d4a843;
+  --border-width-left: 1;
+  --border-color-left: #d4a843;
+  --border-width-right: 1;
+  --border-color-right: #d4a843;
+  text-align: center;
+  align-items: center;
+  margin-top: 6px;
+}
+
+/* FOOTER */
+.reset-footer {
+  display: flex;
+  width: 460px;
+  height: 30px;
+  margin-top: 6px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.reset-btn-cancel {
+  --image-source: "/modules/game_forge/images/button";
+  --image-border: 3;
+  padding: 3px 10px !important;
+  min-width: 70px;
+  min-height: 21px;
+  color: #c0b090;
+  margin-right: 6px;
+}
+
+.reset-btn-cancel:pressed {
+  padding: 3px 10px !important;
+}
+
+.reset-btn-confirm {
+  --image-source: "/modules/game_forge/images/button";
+  --image-border: 3;
+  padding: 3px 10px !important;
+  min-width: 110px;
+  min-height: 21px;
+  color: #d4a843;
+}
+
+.reset-btn-confirm:pressed {
+  padding: 3px 10px !important;
+}

@@ -1,0 +1,9 @@
+Module
+  name: game_vip
+  description: VIP System Modal
+  author: Aethrium
+  website: aethrium
+  scripts: [ game_vip.lua ]
+  sandboxed: true
+  @onLoad: VipController:init()
+  @onUnload: VipController:terminate()

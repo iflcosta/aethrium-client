@@ -53,5 +53,7 @@ Module
     - game_creatureinformation
     - game_rewardwall
     - game_forge
+    - game_vip
+    - game_reset
   @onLoad: init()
   @onUnload: terminate()
