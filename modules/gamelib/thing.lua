@@ -52,3 +52,12 @@ SpriteMaskYellow = 4
 function Thing:isTile()
   return false
 end
+
+local currencyIds = { [3031] = true, [3035] = true, [3043] = true }
+local oldIsMultiUse = Thing.isMultiUse
+function Thing:isMultiUse()
+  if self:isItem() and currencyIds[self:getId()] then
+    return false
+  end
+  return oldIsMultiUse(self)
+end
