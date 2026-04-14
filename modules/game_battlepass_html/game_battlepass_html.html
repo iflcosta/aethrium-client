@@ -1,0 +1,53 @@
+﻿<link href="game_battlepass_html.css" />
+<html>
+  <body>
+    <div style="width: 100%; height: 100%" placement="center">
+      <window class="bp-window" title="Battle Pass Dashboard" placement="center" onescape="self:close()">
+        
+        <!-- Header: Season Info -->
+        <div class="bp-header">
+           <span class="bp-season-text">{{self.seasonLabel}} • {{self.daysLeft}}</span>
+        </div>
+
+        <!-- Level & XP Status -->
+        <div class="bp-level-section">
+           <div class="bp-level-badge">
+              <span class="bp-level-number">{{self.currentLevel}}</span>
+           </div>
+           <span style="color: #dfdfdf; font-size: 10; margin-bottom: 3px">{{self.xpLabel}}</span>
+           <div class="bp-xp-bar-wrap">
+              <div class="bp-xp-bar-fill" *width="self.xpPercent" />
+           </div>
+           <span style="color: #ffd700; font-size: 9">{{self.eliteStatusText}}</span>
+        </div>
+
+        <!-- Missions Section -->
+        <div class="bp-missions-section">
+           <div class="bp-section-title">Daily Missions Progress</div>
+           
+           <div class="bp-task-row" *for="local task in (self.tasks or {})">
+              <div style="display: flex; justify-content: space-between; width: 360px">
+                 <span class="bp-task-name">{{task.label}}</span>
+                 <span style="font-size: 9" *color="task.statusColor">{{task.progress}}</span>
+              </div>
+              <div class="bp-task-progress-wrap">
+                 <div class="bp-task-progress-fill" *width="task.percent" />
+              </div>
+           </div>
+        </div>
+
+        <!-- Footer: Actions -->
+        <div class="bp-footer">
+           <button class="bp-btn-website" onclick="self:openWebsite()">
+              VIEW REWARDS ON WEBSITE
+           </button>
+           <button class="bp-btn-elite" onclick="self:buyElite()" *enabled="self.eliteBtnEnabled">
+              {{self.eliteBtnText}}
+           </button>
+           <button class="bp-btn-close" onclick="self:close()">Close</button>
+        </div>
+
+      </window>
+    </div>
+  </body>
+</html>

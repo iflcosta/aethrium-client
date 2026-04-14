@@ -1,0 +1,9 @@
+Module
+  name: game_battlepass_html
+  description: Battle Pass System - HTML/CSS variant
+  author: Aethrium
+  website: aethrium
+  scripts: [ game_battlepass_html.lua ]
+  sandboxed: true
+  @onLoad: BattlePassHtml:init()
+  @onUnload: BattlePassHtml:terminate()

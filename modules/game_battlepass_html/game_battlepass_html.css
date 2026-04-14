@@ -1,0 +1,153 @@
+/* ============================================================
+   Aethrium Battle Pass — Minimalist Dashboard Style
+   ============================================================ */
+
+.bp-window {
+  position: relative;
+  width: 400px;
+  height: 480px;
+  --image-source: "/modules/game_store/images/window";
+  --image-border: 15;
+  padding: 10px;
+}
+
+/* ──── Header: Season Info ──── */
+.bp-header {
+  width: 380px;
+  height: 30px;
+  text-align: center;
+  border-bottom: 1px solid #4a3010;
+  margin-bottom: 10px;
+}
+
+.bp-season-text {
+  font-size: 11;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+/* ──── Level Circle & Elite Pass ──── */
+.bp-level-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 380px;
+  height: 140px;
+  padding: 10px;
+}
+
+.bp-level-badge {
+  width: 80px;
+  height: 80px;
+  --image-source: "/modules/game_forge/images/item66";
+  --image-size: 80 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.bp-level-number {
+  font-size: 24;
+  color: #fff;
+  font-weight: bold;
+}
+
+.bp-xp-bar-wrap {
+  width: 300px;
+  height: 10px;
+  background-color: #000;
+  border: 1px solid #333;
+  margin-bottom: 15px;
+}
+
+.bp-xp-bar-fill {
+  background-color: #3b7b3b;
+  height: 8px;
+}
+
+/* ──── Daily Missions ──── */
+.bp-missions-section {
+  width: 380px;
+  height: 180px;
+  --image-source: "/modules/game_store/images/panel_flat";
+  --image-border: 3;
+  padding: 10px;
+}
+
+.bp-section-title {
+  font-size: 11;
+  color: #ffd700;
+  margin-bottom: 8px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bp-task-row {
+  width: 360px;
+  height: 45px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #222;
+}
+
+.bp-task-name {
+  font-size: 10;
+  color: #dfdfdf;
+  height: 15px;
+}
+
+.bp-task-progress-wrap {
+  width: 360px;
+  height: 6px;
+  background-color: #000;
+  margin-top: 4px;
+}
+
+.bp-task-progress-fill {
+  background-color: #50e050;
+  height: 6px;
+}
+
+/* ──── Footer Buttons ──── */
+.bp-footer {
+  width: 380px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.bp-btn-website {
+  --image-source: "/modules/game_store/images/longButton";
+  --image-border: 3;
+  width: 340px;
+  height: 25px;
+  color: #ffd700;
+  font-size: 10;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.bp-btn-elite {
+  --image-source: "/modules/game_store/images/longButton";
+  --image-border: 3;
+  width: 340px;
+  height: 25px;
+  color: #fff;
+  font-size: 10;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.bp-btn-close {
+  --image-source: "/modules/game_store/images/button";
+  --image-border: 3;
+  width: 100px;
+  height: 22px;
+  color: #888;
+  font-size: 9;
+  text-align: center;
+  margin-top: 5px;
+}
