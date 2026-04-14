@@ -1,0 +1,81 @@
+<link href="game_battlepass_otui.css" />
+<html>
+  <div style="width: 100%; height: 100%" placement="center">
+    <window
+      class="bp-window"
+      title="Battle Pass"
+      placement="center"
+      onescape="self:hide()"
+    >
+
+      <!-- ── Season + Days ─────────────────────────────────── -->
+      <div class="bp-header-row">
+        <span class="bp-season">{{self.seasonLabel}}</span>
+        <span class="bp-days">{{self.daysLeft}}</span>
+        <button class="bp-elite-btn" *enabled="self.eliteEnabled" onclick="self:buyElite()">{{self.eliteBtn}}</button>
+      </div>
+
+      <!-- ── XP Bar ─────────────────────────────────────────── -->
+      <div class="bp-xprow">
+        <span class="bp-tier-lbl">{{self.tierLabel}}</span>
+        <div class="bp-xptrack">
+          <div class="bp-xpfill" *width-percent="self.xpPercent" />
+        </div>
+        <span class="bp-xp-lbl">{{self.xpText}}</span>
+      </div>
+
+      <div class="bp-sep" />
+
+      <!-- ── Body ──────────────────────────────────────────── -->
+      <div class="bp-body">
+
+        <!-- LEFT column: tier grid -->
+        <div class="bp-left">
+          <span class="bp-col-title">Tier Rewards</span>
+          <div class="bp-legend-row">
+            <span class="bp-legend-spacer" />
+            <span class="bp-legend-free">Free</span>
+            <span class="bp-legend-elite">Elite</span>
+          </div>
+
+          <div class="bp-grid">
+            <div
+              *for="local r in (self.rewards or {})"
+              class="bp-cell"
+              onclick="self:claimTier(r.tier)"
+            >
+              <span class="bp-cell-num">T{{r.tier}}</span>
+              <div class="bp-icon
+                {{r.stateFree == 'claimed' and 'bp-icon-done' or ''}}
+                {{r.stateFree == 'locked'  and 'bp-icon-lock' or ''}}" />
+              <div class="bp-icon bp-icon-r
+                {{r.stateElite == 'claimed' and 'bp-icon-done' or ''}}
+                {{r.stateElite == 'locked'  and 'bp-icon-lock' or ''}}" />
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT column: daily tasks -->
+        <div class="bp-right">
+          <span class="bp-col-title">Daily Missions</span>
+
+          <div
+            *for="local t in (self.dailyTasks or {})"
+            class="bp-task"
+          >
+            <span class="bp-task-lbl">{{t.label}}</span>
+            <div class="bp-bar-track">
+              <div class="bp-bar-fill {{t.completed and 'bp-bar-done' or ''}}" *width-percent="t.pct" />
+            </div>
+            <span class="bp-task-prog">{{t.current}}/{{t.target}}</span>
+            <span class="bp-task-chk {{t.completed and 'bp-chk-done' or ''}}">{{t.completed and 'v' or 'o'}}</span>
+          </div>
+
+          <span *if="not self.dailyTasks or #self.dailyTasks == 0" class="bp-no-tasks">No tasks today</span>
+        </div>
+
+      </div>
+
+    </window>
+  </div>
+</html>

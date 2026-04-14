@@ -1,0 +1,145 @@
+MissionTask < Panel
+  height: 48
+  margin-bottom: 6
+
+  Label
+    id: label
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    font: verdana-11px-rounded
+    color: #dfdfdf
+
+  Label
+    id: progressLabel
+    anchors.top: parent.top
+    anchors.right: parent.right
+    font: terminus-10px
+    color: #ffd700
+
+  ProgressBar
+    id: progressBar
+    height: 8
+    background-color: #111111
+    background: #4a9f4a
+    anchors.top: label.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+    minimum: 0
+    maximum: 100
+
+BattlePassWindow < MainWindow
+  id: battlePassWindow
+  size: 400 500
+  !text: tr('Battle Pass Dashboard')
+  @onEscape: modules.game_battlepass_otui.toggle()
+
+  Label
+    id: seasonLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    text-align: center
+    color: #ffd700
+    margin-top: 5
+    font: verdana-11px-rounded
+
+  Panel
+    id: levelPanel
+    height: 140
+    anchors.top: seasonLabel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+
+    UIWidget
+      id: levelIcon
+      size: 86 86
+      image-source: /modules/game_forge/images/item66.png
+      image-smooth: true
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+
+    Label
+      id: levelNumber
+      color: #ffffff
+      font: verdana-11px-rounded
+      anchors.fill: levelIcon
+      text-align: center
+      margin-top: 25
+
+    ProgressBar
+      id: xpBar
+      height: 14
+      background-color: #111111
+      background: #3b7b3b
+      anchors.top: levelIcon.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin: 15 40 0 40
+      minimum: 0
+      maximum: 100
+
+    Label
+      id: xpLabel
+      color: #bbbbbb
+      font: terminus-10px
+      anchors.top: xpBar.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 5
+
+  Label
+    id: missionTitle
+    !text: tr('DAILY MISSIONS')
+    color: #ffd700
+    anchors.top: levelPanel.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 20
+    font: verdana-11px-rounded
+
+  ScrollablePanel
+    id: missionList
+    height: 160
+    anchors.top: missionTitle.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin: 10
+    padding: 5
+    vertical-scrollbar: missionScrollBar
+    layout: verticalBox
+
+  VerticalScrollBar
+    id: missionScrollBar
+    anchors.top: missionList.top
+    anchors.bottom: missionList.bottom
+    anchors.right: parent.right
+    step: 20
+
+  Button
+    id: websiteButton
+    !text: tr('VIEW REWARDS ON WEBSITE')
+    height: 30
+    color: #ffd700
+    anchors.top: missionList.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin: 25 30 0 30
+    @onClick: g_platform.openUrl("https://aethrium-baiak.com/battlepass")
+
+  Button
+    id: eliteButton
+    !text: tr('UPGRADE TO ELITE')
+    height: 30
+    anchors.top: websiteButton.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin: 5 30 0 30
+
+  Button
+    id: closeButton
+    !text: tr('Close')
+    width: 100
+    anchors.bottom: parent.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    @onClick: modules.game_battlepass_otui.toggle()

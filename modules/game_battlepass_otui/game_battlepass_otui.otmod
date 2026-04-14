@@ -1,0 +1,9 @@
+Module
+  name: game_battlepass_otui
+  description: Aethrium Battle Pass - OTUI Classic Variant
+  author: Aethrium
+  website: aethrium
+  scripts: [ game_battlepass_otui.lua ]
+  sandboxed: true
+  @onLoad: init()
+  @onUnload: terminate()

@@ -55,6 +55,6 @@ Module
     - game_forge
     - game_vip
     - game_reset
-    - game_battlepass_html
+    - game_battlepass_otui
   @onLoad: init()
   @onUnload: terminate()
