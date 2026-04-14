@@ -1,145 +1,454 @@
-MissionTask < Panel
-  height: 48
-  margin-bottom: 6
+
+BpDarkPanel < Panel
+  background-color: #FFFFFF0A
+
+  border-width: 1
+  border-color: #FFFFFF18
+
+BpSeparator < UIWidget
+  height: 1
+  background-color: #FFFFFF18
+
+
+BpXpBar < ProgressBar
+  height: 10
+  border-width: 1
+  border-color: #00E5FF44
+  background-color: #00000066
+  background: #00C8E0
+
+BpTaskBar < ProgressBar
+  height: 6
+  border-width: 0
+  background-color: #00000044
+  background: #00C8E0
+
+
+BpButtonClaim < Button
+  height: 22
+  width: 72
+  font: terminus-10px
+  color: #00E5FF
+  border-width: 1
+  border-color: #00E5FF
+  background-color: #00E5FF18
+  text-align: center
+  $hover:
+    background-color: #00E5FF30
+  $pressed:
+    background-color: #00E5FF44
+
+BpButtonEliteClaim < Button
+  height: 22
+  width: 72
+  font: terminus-10px
+  color: #FFD700
+  border-width: 1
+  border-color: #FFD700
+  background-color: #FFD70018
+  text-align: center
+  $hover:
+    background-color: #FFD70030
+  $pressed:
+    background-color: #FFD70044
+
+BpButtonLocked < Button
+  height: 22
+  width: 72
+  font: terminus-10px
+  color: #555555
+  border-width: 1
+  border-color: #444444
+  background-color: #FFFFFF08
+  text-align: center
+  enabled: false
+
+
+MissionTask < BpDarkPanel
+  height: 52
+  margin-bottom: 5
+  padding: 6
 
   Label
-    id: label
+    id: taskLabel
     anchors.top: parent.top
     anchors.left: parent.left
-    anchors.right: parent.right
+    anchors.right: taskProgress.left
+    margin-right: 6
     font: verdana-11px-rounded
-    color: #dfdfdf
+    color: #DDDDDD
+    text-auto-resize: false
+    text-wrap: false
 
   Label
-    id: progressLabel
+    id: taskProgress
     anchors.top: parent.top
     anchors.right: parent.right
+    width: 70
     font: terminus-10px
-    color: #ffd700
+    color: #FFD700
+    text-align: right
 
-  ProgressBar
-    id: progressBar
-    height: 8
-    background-color: #111111
-    background: #4a9f4a
-    anchors.top: label.bottom
+  BpTaskBar
+    id: taskBar
+    anchors.top: taskLabel.bottom
     anchors.left: parent.left
     anchors.right: parent.right
     margin-top: 6
     minimum: 0
     maximum: 100
 
-BattlePassWindow < MainWindow
-  id: battlePassWindow
-  size: 400 500
-  !text: tr('Battle Pass Dashboard')
-  @onEscape: modules.game_battlepass_otui.toggle()
+  Label
+    id: taskXp
+    anchors.top: taskBar.bottom
+    anchors.right: parent.right
+    font: terminus-10px
+    color: #00E5FF88
+    margin-top: 3
+
+RewardRow < UIWidget
+  height: 60
+  margin-bottom: 4
 
   Label
-    id: seasonLabel
+    id: tierBadge
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    width: 38
+    font: verdana-11px-rounded
+    color: #AAAAAA
+    text-align: center
+
+  BpDarkPanel
+    id: freeSlot
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: tierBadge.right
+    anchors.right: parent.horizontalCenter
+    margin: 2 3 2 0
+    padding: 4
+
+    UIItem
+      id: freeIcon
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: parent.left
+      size: 32 32
+      image-smooth: true
+
+    Label
+      id: freeName
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: freeIcon.right
+      anchors.right: freeBtn.left
+      margin-left: 5
+      margin-right: 4
+      font: terminus-10px
+      color: #CCCCCC
+      text-wrap: false
+      text-auto-resize: false
+
+    BpButtonClaim
+      id: freeBtn
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      margin-right: 4
+
+  BpDarkPanel
+    id: eliteSlot
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    anchors.left: parent.horizontalCenter
+    anchors.right: parent.right
+    margin: 2 0 2 3
+    padding: 4
+    border-color: #FFD70022
+
+    UIItem
+      id: eliteIcon
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: parent.left
+      size: 32 32
+      image-smooth: true
+
+    Label
+      id: eliteName
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: eliteIcon.right
+      anchors.right: eliteBtn.left
+      margin-left: 5
+      margin-right: 4
+      font: terminus-10px
+      color: #FFD70099
+      text-wrap: false
+      text-auto-resize: false
+
+    BpButtonEliteClaim
+      id: eliteBtn
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      margin-right: 4
+
+
+BattlePassWindow < MainWindow
+  id: battlePassWindow
+  size: 620 580
+  !text: tr('Battle Pass')
+  @onEscape: modules.game_battlepass_otui.toggle()
+
+  BpDarkPanel
+    id: headerPanel
+    height: 90
     anchors.top: parent.top
     anchors.left: parent.left
     anchors.right: parent.right
-    text-align: center
-    color: #ffd700
-    margin-top: 5
-    font: verdana-11px-rounded
-
-  Panel
-    id: levelPanel
-    height: 140
-    anchors.top: seasonLabel.bottom
-    anchors.left: parent.left
-    anchors.right: parent.right
-    margin-top: 10
+    margin-top: 4
+    padding: 10
 
     UIWidget
-      id: levelIcon
-      size: 86 86
-      image-source: /modules/game_forge/images/item66.png
-      image-smooth: true
+      id: levelBadge
+      size: 56 56
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: parent.left
+      background-color: #00E5FF22
+      border-width: 2
+      border-color: #00E5FF88
+
+      Label
+        id: levelNumber
+        anchors.fill: parent
+        text-align: center
+        font: verdana-11px-rounded
+        color: #00E5FF
+
+    UIWidget
+      id: headerRight
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: levelBadge.right
+      anchors.right: parent.right
+      margin-left: 12
+
+      Label
+        id: seasonLabel
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: seasonTimer.left
+        font: verdana-11px-rounded
+        color: #FFFFFF99
+        margin-top: 2
+
+      Label
+        id: seasonTimer
+        anchors.top: parent.top
+        anchors.right: parent.right
+        font: terminus-10px
+        color: #FFD700
+        margin-top: 4
+
+      BpXpBar
+        id: xpBar
+        anchors.top: seasonLabel.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        margin-top: 6
+        minimum: 0
+        maximum: 100
+
+      Label
+        id: xpLabel
+        anchors.top: xpBar.bottom
+        anchors.left: parent.left
+        font: terminus-10px
+        color: #AAAAAA
+        margin-top: 3
+
+      Label
+        id: dailyTimer
+        anchors.top: xpBar.bottom
+        anchors.right: parent.right
+        font: terminus-10px
+        color: #00E5FF88
+        margin-top: 3
+
+  UIWidget
+    id: tabBar
+    height: 34
+    anchors.top: headerPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+
+    Button
+      id: tabDaily
+      !text: tr('Daily Pass')
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: parent.horizontalCenter
+      margin-right: 2
+      font: verdana-11px-rounded
+      color: #00E5FF
+      background-color: #1A1A2E
+      border-width: 1
+      border-color: #00E5FF
+      @onClick: modules.game_battlepass_otui.switchTab('daily')
+
+    Button
+      id: tabSeason
+      !text: tr('Seasonal Pass')
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.left: parent.horizontalCenter
+      anchors.right: parent.right
+      margin-left: 2
+      font: verdana-11px-rounded
+      color: #888888
+      background-color: #0D0D14
+      border-width: 1
+      border-color: #333333
+      @onClick: modules.game_battlepass_otui.switchTab('season')
+
+  BpSeparator
+    anchors.top: tabBar.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 4
+
+  UIWidget
+    id: dailyPanel
+    anchors.top: tabBar.bottom
+    anchors.bottom: eliteBanner.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+
+    Label
+      id: dailyHeader
+      !text: tr('Today\'s Missions')
       anchors.top: parent.top
       anchors.horizontalCenter: parent.horizontalCenter
-
-    Label
-      id: levelNumber
-      color: #ffffff
       font: verdana-11px-rounded
-      anchors.fill: levelIcon
-      text-align: center
-      margin-top: 25
+      color: #00E5FF
+      margin-bottom: 6
 
-    ProgressBar
-      id: xpBar
-      height: 14
-      background-color: #111111
-      background: #3b7b3b
-      anchors.top: levelIcon.bottom
+    ScrollablePanel
+      id: missionList
+      anchors.top: dailyHeader.bottom
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: missionScrollBar.left
+      margin-top: 6
+      padding: 4
+      vertical-scrollbar: missionScrollBar
+      layout: verticalBox
+
+    VerticalScrollBar
+      id: missionScrollBar
+      anchors.top: dailyHeader.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      step: 20
+
+  UIWidget
+    id: seasonPanel
+    anchors.top: tabBar.bottom
+    anchors.bottom: eliteBanner.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 8
+    visible: false
+
+    UIWidget
+      id: rewardHeader
+      height: 18
+      anchors.top: parent.top
       anchors.left: parent.left
       anchors.right: parent.right
-      margin: 15 40 0 40
-      minimum: 0
-      maximum: 100
 
-    Label
-      id: xpLabel
-      color: #bbbbbb
-      font: terminus-10px
-      anchors.top: xpBar.bottom
-      anchors.horizontalCenter: parent.horizontalCenter
-      margin-top: 5
+      Label
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        width: 38
+        font: terminus-10px
+        color: #666666
+        text-align: center
+        !text: tr('Tier')
 
-  Label
-    id: missionTitle
-    !text: tr('DAILY MISSIONS')
-    color: #ffd700
-    anchors.top: levelPanel.bottom
-    anchors.horizontalCenter: parent.horizontalCenter
-    margin-top: 20
-    font: verdana-11px-rounded
+      Label
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.right: parent.horizontalCenter
+        margin-left: 38
+        font: terminus-10px
+        color: #00E5FF88
+        text-align: center
+        !text: tr('Free Reward')
 
-  ScrollablePanel
-    id: missionList
-    height: 160
-    anchors.top: missionTitle.bottom
-    anchors.left: parent.left
-    anchors.right: parent.right
-    margin: 10
-    padding: 5
-    vertical-scrollbar: missionScrollBar
-    layout: verticalBox
+      Label
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.horizontalCenter
+        anchors.right: parent.right
+        font: terminus-10px
+        color: #FFD70088
+        text-align: center
+        !text: tr('Elite Reward')
 
-  VerticalScrollBar
-    id: missionScrollBar
-    anchors.top: missionList.top
-    anchors.bottom: missionList.bottom
-    anchors.right: parent.right
-    step: 20
+    ScrollablePanel
+      id: rewardList
+      anchors.top: rewardHeader.bottom
+      anchors.bottom: parent.bottom
+      anchors.left: parent.left
+      anchors.right: rewardScrollBar.left
+      margin-top: 4
+      padding: 4
+      vertical-scrollbar: rewardScrollBar
+      layout: verticalBox
 
-  Button
-    id: websiteButton
-    !text: tr('VIEW REWARDS ON WEBSITE')
-    height: 30
-    color: #ffd700
-    anchors.top: missionList.bottom
-    anchors.left: parent.left
-    anchors.right: parent.right
-    margin: 25 30 0 30
-    @onClick: g_platform.openUrl("https://aethrium-baiak.com/battlepass")
+    VerticalScrollBar
+      id: rewardScrollBar
+      anchors.top: rewardHeader.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      step: 30
 
-  Button
-    id: eliteButton
-    !text: tr('UPGRADE TO ELITE')
-    height: 30
-    anchors.top: websiteButton.bottom
-    anchors.left: parent.left
-    anchors.right: parent.right
-    margin: 5 30 0 30
-
-  Button
-    id: closeButton
-    !text: tr('Close')
-    width: 100
+  UIWidget
+    id: eliteBanner
+    height: 52
     anchors.bottom: parent.bottom
-    anchors.horizontalCenter: parent.horizontalCenter
-    @onClick: modules.game_battlepass_otui.toggle()
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-bottom: 2
+
+    BpDarkPanel
+      anchors.fill: parent
+      border-color: #FFD700AA
+      border-width: 1
+      background-color: #FFD70010
+
+      Label
+        id: eliteBannerLabel
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.right: eliteBuyBtn.left
+        margin-left: 14
+        font: verdana-11px-rounded
+        color: #FFD700
+        text-wrap: false
+
+      Button
+        id: eliteBuyBtn
+        !text: tr('UPGRADE NOW')
+        height: 28
+        width: 130
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        margin-right: 10
+        font: verdana-11px-rounded
+        color: #0D0D14
+        background-color: #FFD700
+        border-width: 0
+        $hover:
+          background-color: #FFE840
+        $pressed:
+          background-color: #CCA800
+        @onClick: modules.game_battlepass_otui.buyElite()
